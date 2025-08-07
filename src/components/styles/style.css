@@ -13,21 +13,35 @@ body {
   padding: 2vw;
   border-radius: 12px;
 }
-
-.main-info h1 {
+.weather-card .main-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.weather-card .main-info h1 {
   font-size: 2.5vw;
   margin: 0;
 }
-.main-info h2 {
+.weather-card .main-info h2 {
   font-size: 1.5vw;
   margin: 0;
 }
-.main-info p {
+.weather-card .main-info p {
   font-size: 3.5vw;
   margin: 0;
 }
-
-.day-info {
+.weather-card .main-info .search-bar {
+  background-color: white;
+  width: 20vw;
+  align-items: center;
+  justify-content: center;
+  height: 2.5vw;
+  border-radius: 8px;
+  color: gray;
+  padding: 1vw;
+}
+.weather-card .day-info {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -37,13 +51,11 @@ body {
   border-radius: 8px;
   margin-bottom: 1vw;
 }
-
-.day-t-list {
+.weather-card .day-t-list {
   display: flex;
   flex-direction: row;
 }
-
-.week-info {
+.weather-card .week-info {
   display: flex;
   flex-direction: column;
   align-items: start;

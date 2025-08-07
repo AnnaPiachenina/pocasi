@@ -14,46 +14,61 @@ body {
     padding: 2vw;
     border-radius: 12px;
 
-}
 
-.main-info {
-    h1{
-        font-size: 2.5vw;
-        margin: 0;
+
+    .main-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h1{
+            font-size: 2.5vw;
+            margin: 0;
+        }
+        h2{
+            font-size: 1.5vw;
+            margin: 0;
+        }
+        p{
+            font-size: 3.5vw;
+            margin: 0;
+        }
+
+        .search-bar{
+            background-color: white;
+            width: 20vw;
+            align-items: center;
+            justify-content: center;
+            height:2.5vw;
+            border-radius: 8px;
+            color:gray;
+            padding: 1vw;
+        }
     }
-    h2{
-        font-size: 1.5vw;
-        margin: 0;
+
+    .day-info{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        background-color: white;
+        color:black;
+        padding: 1.5vw;
+        border-radius: 8px;
+        margin-bottom: 1vw;
     }
-    p{
-        font-size: 3.5vw;
-        margin: 0;
+
+    .day-t-list{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .week-info{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        background-color: white;
+        color:black;
+        padding: 1.5vw;
+        border-radius: 8px;
     }
 }
-
-.day-info{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    background-color: white;
-    color:black;
-    padding: 1.5vw;
-    border-radius: 8px;
-    margin-bottom: 1vw;
-}
-
-.day-t-list{
-    display: flex;
-    flex-direction: row;
-}
-
-.week-info{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    background-color: white;
-    color:black;
-    padding: 1.5vw;
-    border-radius: 8px;
-}
-
