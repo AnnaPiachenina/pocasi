@@ -2,6 +2,7 @@ import React from 'react'
 import { useRef } from 'react';
 import { FaCaretLeft } from "react-icons/fa";
 import { FaCaretRight } from "react-icons/fa";
+import { iconMap } from './WeatherIcons';
 
 const HourlyWeather = ({hourly}) => {
     if (!hourly || !Array.isArray(hourly)) return null;
@@ -29,20 +30,18 @@ const HourlyWeather = ({hourly}) => {
     return (
         <div className="hour-scroll">
           
-          <FaCaretLeft className='size-9' onClick={scrollLeft} />
+          <FaCaretLeft className='scroll' onClick={scrollLeft} />
     
           <ul className="day-t-list" ref={scrollRef}>
             {hourly.slice(0, 24).map((hour, idx) => {
               const date = new Date(hour.dt * 1000);
               const hourSpecific = hours[date.getHours()];
+              const IconComponent = iconMap[hour.weather[0].icon] || iconMap['01d'];
               return (
                 <li key={idx} className="day-t-item">
                     <div className="day-t-content">
                         {hourSpecific}
-                        <img
-                            src={`https://openweathermap.org/img/wn/${hour.weather[0].icon}.png`}
-                            alt={hour.weather[0].description}
-                        />
+                        {IconComponent && <IconComponent size={32} />}
                         {Math.round(hour.temp)}°C
                    </div>
                 </li>
@@ -50,7 +49,7 @@ const HourlyWeather = ({hourly}) => {
             })}
           </ul>
 
-          <FaCaretRight className='size-9' onClick={scrollRight}/>
+          <FaCaretRight className='scroll' onClick={scrollRight}/>
 
         </div>
       );
