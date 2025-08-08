@@ -44,19 +44,19 @@
 
 .week-t-list {
   margin: 1vw;
+  width: 100%;
 }
 
 .week-t-item {
-  width: 10vw;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .week-container {
   display: flex;
-  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
+  border-bottom: rgba(255, 255, 255, 0.3) 1px solid;
 }
 
 .weather-card {
