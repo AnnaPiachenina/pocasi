@@ -1,13 +1,65 @@
-body {
+.day-t-list {
   display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1vw;
+  list-style: none;
+  margin: 1vw;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.day-t-item {
+  width: 10vw;
+  flex: 0 0 auto;
+}
+
+.day-t-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hour-scroll {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
-  height: -moz-max-content;
-  height: max-content;
+  color: #002846;
+}
+
+.week-info {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+  padding: 1.5vw;
+  border-radius: 8px;
+  margin: 1vw 3vw;
+}
+
+.week-t-list {
+  margin: 1vw;
+}
+
+.week-t-item {
+  width: 10vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.week-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .weather-card {
-  background-color: blue;
   color: white;
   display: flex;
   flex-direction: column;
@@ -15,53 +67,60 @@ body {
   border-radius: 12px;
 }
 .weather-card .main-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+}
+
+.main-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+  padding: 2vw;
 }
-.weather-card .main-info h1 {
+.main-container h1 {
   font-size: 2.5vw;
   margin: 0;
 }
-.weather-card .main-info h2 {
+.main-container h2 {
   font-size: 1.5vw;
   margin: 0;
 }
-.weather-card .main-info p {
+.main-container p {
   font-size: 3.5vw;
   margin: 0;
 }
-.weather-card .main-info .search-bar {
-  background-color: white;
+
+.search-bar {
+  background-color: rgba(255, 255, 255, 0.4);
   width: 20vw;
   align-items: center;
   justify-content: center;
   height: 2.5vw;
   border-radius: 8px;
-  color: gray;
+  color: white;
   padding: 1vw;
+  margin: 1vw 3vw;
 }
-.weather-card .day-info {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  background-color: white;
-  color: black;
-  padding: 1.5vw;
-  border-radius: 8px;
-  margin-bottom: 1vw;
+
+body {
+  background: linear-gradient(315deg, #b4ddff 3%, #64b5f6 38%, #1976d2 68%, #42a5f5 98%);
+  animation: gradient 15s ease infinite;
+  background-size: 800% 800%;
 }
-.weather-card .day-t-list {
-  display: flex;
-  flex-direction: row;
-}
-.weather-card .week-info {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  background-color: white;
-  color: black;
-  padding: 1.5vw;
-  border-radius: 8px;
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }/*# sourceMappingURL=style.css.map */

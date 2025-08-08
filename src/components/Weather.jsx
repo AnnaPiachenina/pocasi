@@ -48,24 +48,32 @@ const Weather = () => {
     },[])
 
   return (
-    <div className='weather-card'>
-        <div className='main-info'>
-            <div>
-                <input type="text" placeholder='search' className='search-bar'/>
-            </div>
-            <h1>{weatherData.location}</h1>
-            <img
-                src={`https://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
-                alt={weatherData.description}
-                />
-            <h2>{weatherData.description}</h2>
-            <p>{weatherData.temperature}</p>
-        </div>
+    <>
 
-        <HourlyWeather hourly={weatherData.hourly}/>
-        <WeeklyWeather daily={weatherData.daily}/>
-        
-    </div>
+        <div className='weather-card'>
+            <div className='main-info'>
+                <div className='main-container'>
+                    
+                    <div>
+                        <input type="text" placeholder='search' className='search-bar'/>
+                    </div>
+                    <h1>{weatherData.location}</h1>
+                    <img
+                        src={`https://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
+                        alt={weatherData.description}
+                        />
+                    <h2>{weatherData.description}</h2>
+                    <p>{weatherData.temperature}</p>
+
+                </div>
+
+                <WeeklyWeather daily={weatherData.daily}/>
+            </div>
+
+            <HourlyWeather hourly={weatherData.hourly}/>
+            
+        </div>
+    </>
   )
 }
 

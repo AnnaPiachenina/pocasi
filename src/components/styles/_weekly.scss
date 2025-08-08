@@ -1,0 +1,25 @@
+.week-info{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.30); 
+    color:black;
+    padding: 1.5vw;
+    border-radius: 8px;
+    margin: 1vw 3vw
+
+}
+
+.week-t-list{
+    margin: 1vw;
+}
+.week-t-item{
+    width: 10vw;
+    justify-content: center;
+    align-items: center ;
+}
+.week-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

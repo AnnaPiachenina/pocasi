@@ -12,11 +12,15 @@ const WeeklyWeather = ({daily}) => {
                     const dayName = days[date.getDay()];
                     return  ( 
                         <li key={idx} className='week-t-item'>
-                            {dayName},{Math.round(day.temp.day)}°C, {day.weather[0].description}
-                            <img
-                            src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                            alt={day.weather[0].description}
-                        />
+                            <div className='flex flex-row justify-between items-center'>
+                                {dayName}
+                                {Math.round(day.temp.day)}°C
+                                <img
+                                src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                                alt={day.weather[0].description}
+                                />
+                                {day.wind_speed} m/s
+                            </div>
                         </li>
                         );
                     })}
