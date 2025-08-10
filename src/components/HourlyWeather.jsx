@@ -40,7 +40,7 @@ const HourlyWeather = ({hourly}) => {
                 <li key={idx} className="day-t-item">
                     <div className="day-t-content">
                         {hourSpecific}
-                        {IconComponent && <IconComponent size={32} />}
+                        {IconComponent && <img src={IconComponent} alt="weather icon" width={32} height={32} />}
                         {Math.round(hour.temp)}°C
                    </div>
                 </li>

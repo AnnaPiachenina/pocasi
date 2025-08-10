@@ -18,7 +18,7 @@ const WeeklyWeather = ({daily}) => {
                             <div className='week-container'>
                                 <p className='week-item'>{dayName}</p>
                                 <p className='week-item'>{Math.round(day.temp.day)}°C</p>
-                                <p className='week-item'>{IconComponent && <IconComponent size={32} />}</p>
+                                <p className='week-item'>{IconComponent && <img src={IconComponent} alt="weather icon" width={32} height={32} />}</p>
                                 <div className='week-item wind-speed'>
                                     <p>{day.wind_speed}</p>
                                     <p>m/s</p>

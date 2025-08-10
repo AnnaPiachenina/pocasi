@@ -4,9 +4,9 @@ import './styles/style.css'
 import cityList from '../data/city.list.json';
 import WeeklyWeather from './WeeklyWeather';
 import HourlyWeather from './HourlyWeather';
-import { RiWindyLine } from "react-icons/ri";
-import { GiRadiations } from "react-icons/gi";
-import { IoWaterOutline } from "react-icons/io5";
+import Humidity from './icons/Humidity.svg'; 
+import Uva from './icons/Uva.svg';
+import WindSpeed from './icons/WindSpeed.svg';
 
 import { iconMap } from './WeatherIcons';
 
@@ -67,21 +67,21 @@ const Weather = () => {
                         <input type="text" placeholder='search' className='search-bar'/>
                     </div>
                     <h1>{weatherData.location}</h1>
-                    {weatherData.icon && <weatherData.icon size={82} />}
+                    {weatherData.icon && <img src={weatherData.icon} alt="weather icon" width={82} height={82} />}
                     <h2>{weatherData.description}</h2>
                     <p>{weatherData.temperature}°C</p>
                     <div className='weather-details'>
                         <div className='details-item'>
                             <p>{weatherData.wind}</p>
-                            <RiWindyLine className='details-icon'/>
+                            <img src={WindSpeed} alt="wind" className='details-icon' width={24} height={24}/>
                         </div>
                         <div className='details-item'>
                             <p>{weatherData.uvi}</p>
-                            <GiRadiations className='details-icon' />
+                            <img src={Uva} alt="uva" className='details-icon' width={24} height={24} />
                         </div>
                         <div className='details-item'>
                             <p>{weatherData.humidity}</p>
-                            <IoWaterOutline className='details-icon' />
+                            <img src={Humidity} alt="Humidity" className="details-icon" width={24} height={24}/>
                         </div>
                     </div>
 

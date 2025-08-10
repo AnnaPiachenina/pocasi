@@ -88,6 +88,18 @@
     font-size: 2vw;
   }
 }
+@media (max-width: 600px) {
+  .week-container {
+    gap: 1vw;
+    text-align: center;
+  }
+  .week-item {
+    font-size: 4vw;
+  }
+  .wind-speed {
+    font-size: 4vw;
+  }
+}
 .weather-card {
   color: white;
   display: grid;

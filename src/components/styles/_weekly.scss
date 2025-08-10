@@ -42,3 +42,17 @@
     }
 }
 
+@media (max-width: 600px){
+    .week-container{
+        gap:1vw;
+        text-align: center;
+    }
+
+    .week-item{
+        font-size: 4vw;
+    }
+
+    .wind-speed{
+        font-size: 4vw;
+    }
+}
