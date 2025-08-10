@@ -4,9 +4,7 @@
     scroll-behavior: smooth;
     padding: 1vw;
     list-style: none;
-    margin: 1vw;
-    border-radius: 15px;
-    background-color: $secondary-color; 
+    gap: 1vw;
 }
 
 .day-t-item {
@@ -28,7 +26,20 @@
     overflow: hidden;
     justify-content: center;
     align-items: center;
+    gap: 1vw;
 }
 .scroll{
     font-size: 3vw;
+}
+
+@media (max-width: 600px){
+    .day-t-item {
+        width: 15vw;
+    }
+    .scroll{
+        font-size: 5vw;
+    }
+    .hour-scroll {
+        gap: 2vw;
+    }
 }

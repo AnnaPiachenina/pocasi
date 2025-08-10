@@ -29,8 +29,7 @@ const HourlyWeather = ({hourly}) => {
 
     return (
         <div className="hour-scroll">
-          
-          <FaCaretLeft className='scroll' onClick={scrollLeft} />
+          <div className='scroll'><FaCaretLeft onClick={scrollLeft} /></div>
     
           <ul className="day-t-list" ref={scrollRef}>
             {hourly.slice(0, 24).map((hour, idx) => {
@@ -48,8 +47,7 @@ const HourlyWeather = ({hourly}) => {
               );
             })}
           </ul>
-
-          <FaCaretRight className='scroll' onClick={scrollRight}/>
+          <div className='scroll'><FaCaretRight onClick={scrollRight}/></div>
 
         </div>
       );

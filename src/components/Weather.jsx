@@ -67,7 +67,7 @@ const Weather = () => {
                         <input type="text" placeholder='search' className='search-bar'/>
                     </div>
                     <h1>{weatherData.location}</h1>
-                    {weatherData.icon && <weatherData.icon size={64} />}
+                    {weatherData.icon && <weatherData.icon size={82} />}
                     <h2>{weatherData.description}</h2>
                     <p>{weatherData.temperature}°C</p>
                     <div className='weather-details'>
@@ -87,10 +87,10 @@ const Weather = () => {
 
                 </div>
 
-                <WeeklyWeather daily={weatherData.daily}/>
+                
             </div>
-
-            <HourlyWeather hourly={weatherData.hourly}/>
+            <div className='daily'><WeeklyWeather daily={weatherData.daily}/></div>
+            <div className='hourly'><HourlyWeather hourly={weatherData.hourly}/></div>
             
         </div>
     </>
