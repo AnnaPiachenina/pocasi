@@ -12,8 +12,10 @@
         grid-area: daily; 
         background-color: $secondary-color;
         border-radius: 8px;
+        margin-top: 2vw;
         padding: 0vw 2vw;
         justify-self: end;
+        height: fit-content;
     }
     .hourly {
         grid-column: 1 / -1;
@@ -27,7 +29,6 @@
         justify-content: start;
         align-items: center;
         gap:1vw;
-        margin: 2vw;
         grid-area: main; 
         
     }
@@ -52,21 +53,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5vw;
-    padding: 1vw 2vw;
     width: 100%;
-
-    .search-bar{
-        background-color: rgba(255, 255, 255, 0.40); 
-        width:20vw;
-        align-items: center;
-        justify-content: center;
-        height:2.5vw;
-        border-radius: 8px;
-        border: none;
-        color:white;
-        padding: 0vw 1vw;
-        margin: 1vw 3vw;
-    }
 
 }
 
@@ -91,7 +78,7 @@
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 700px){
     .weather-card{
         grid-template-columns: 1fr;
         grid-template-areas:

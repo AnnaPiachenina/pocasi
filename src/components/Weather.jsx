@@ -2,8 +2,10 @@ import React, {useEffect} from 'react'
 import { useState } from 'react';
 import './styles/style.css'   
 import cityList from '../data/city.list.json';
+import Time from './Time';
 import WeeklyWeather from './WeeklyWeather';
 import HourlyWeather from './HourlyWeather';
+import Searchbar from './Searchbar';
 import Humidity from './icons/Humidity.svg'; 
 import Uva from './icons/Uva.svg';
 import WindSpeed from './icons/WindSpeed.svg';
@@ -15,12 +17,15 @@ const Weather = () => {
     const [weatherData, setWeatherData] = useState(false);
 
     const search = async (name) => {
+        
         try {
             const city = cityList.find(
                 c => c.name.toLowerCase() === name.toLowerCase()
             );
+
             if (!city) {
                 console.error('City not found');
+                setWeatherData(null);
                 return;
             }
 
@@ -30,6 +35,7 @@ const Weather = () => {
 
             const response = await fetch(url);
             const data = await response.json();
+
             console.log(data);
 
             const icon = iconMap[data.current.weather[0].icon] || iconMap['01d'];
@@ -46,6 +52,7 @@ const Weather = () => {
                 daily: data.daily,
                 humidity: data.current.humidity,
                 uvi: data.current.uvi,
+                time: data.dt,
 
             });
         }   catch (error) {
@@ -58,14 +65,11 @@ const Weather = () => {
 
   return (
     <>
-
+        <Time />
         <div className='weather-card'>
             <div className='main-info'>
                 <div className='main-container'>
-
-                    <div>
-                        <input type="text" placeholder='search' className='search-bar'/>
-                    </div>
+                    <Searchbar onSearch={search}/>
                     <h1>{weatherData.location}</h1>
                     {weatherData.icon && <img src={weatherData.icon} alt="weather icon" width={82} height={82} />}
                     <h2>{weatherData.description}</h2>
