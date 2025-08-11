@@ -32,7 +32,7 @@ const HourlyWeather = ({hourly}) => {
     return (
         <div className="hour-scroll">
 
-          <img onClick={scrollLeft} src={Left} alt='left' className='scroll' width={32} height={32}/>
+          <img title='scroll left' onClick={scrollLeft} src={Left} alt='left' className='scroll' width={32} height={32}/>
     
           <ul className="day-t-list" ref={scrollRef}>
             {hourly.slice(0, 24).map((hour, idx) => {
@@ -50,7 +50,7 @@ const HourlyWeather = ({hourly}) => {
               );
             })}
           </ul>
-          <img onClick={scrollRight} src={Right} alt='right' className='scroll' width={32} height={32}/>
+          <img title='scroll right' onClick={scrollRight} src={Right} alt='right' className='scroll' width={32} height={32}/>
 
         </div>
       );

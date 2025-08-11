@@ -107,7 +107,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas: "main daily" "hourly hourly";
-  padding: 2vw;
+  padding: 0vw 2vw;
   border-radius: 12px;
   gap: 1vw;
 }
@@ -177,6 +177,7 @@
 
 @media (max-width: 700px) {
   .weather-card {
+    padding: 2vw;
     grid-template-columns: 1fr;
     grid-template-areas: "main" "hourly" "daily";
   }
@@ -320,6 +321,7 @@
   color: white;
   margin: 0 3vw;
   padding: 0;
+  padding-top: 1vw;
   font-size: 1.5vw;
   font-weight: bald;
 }

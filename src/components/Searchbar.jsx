@@ -38,13 +38,13 @@ const Searchbar = ({onSearch}) => {
     <form onSubmit={handleSubmit} className="search-bar-container" autoComplete="off">
     <div className="search-bar">
         <input type="text" placeholder="search" value={search} onChange={handleSearchChange} className="search"/>
-        <button type="submit" className="search-button">
+        <button title='search' type="submit" className="search-button">
             <img src={SearchIcon} alt="search"/>
         </button>
 
         {suggestions.length > 0 && (
         <ul className="suggestions-list" role="listbox">
-            // limit na max 10 navrhovanych mest
+            {/*limit na max 10 navrhovanych mest*/}
             {suggestions.slice(0, 10).map((s, i) => (
             <li
                 key={i}

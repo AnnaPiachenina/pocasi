@@ -80,17 +80,17 @@ const Weather = () => {
                     <p>{weatherData.temperature}°C</p>
                     <div className='weather-details'>
                         {/*rychlost vetru */}
-                        <div className='details-item'>
+                        <div title='wind speed' className='details-item'>
                             <p>{weatherData.wind}</p>
                             <img src={WindSpeed} alt="wind" className='details-icon' width={24} height={24}/>
                         </div>
                         {/* UVA index */}
-                        <div className='details-item'>
+                        <div title='UVA index' className='details-item'>
                             <p>{weatherData.uvi}</p>
                             <img src={Uva} alt="uva" className='details-icon' width={24} height={24} />
                         </div>
                         {/* vlhkost vzduchu */}
-                        <div className='details-item'>
+                        <div title='Humidity' className='details-item'>
                             <p>{weatherData.humidity}</p>
                             <img src={Humidity} alt="Humidity" className="details-icon" width={24} height={24}/>
                         </div>

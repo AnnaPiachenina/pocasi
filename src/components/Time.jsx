@@ -4,13 +4,14 @@ const Time = ({ weatherData }) => {
   const [formattedTime, setFormattedTime] = useState('');
 
   useEffect(() => {
+    // kontrola zda weatherData obsahuje potrebne informace
     if (!weatherData?.time || !weatherData?.timezone) {
       setFormattedTime('');
       return;
     }
-
+    // prevod unix casu na Date objekt a formatovani casu
     const date = new Date(weatherData.time * 1000);
-
+    // formatovani casu podle timezone uzivatele
     const options = {
       weekday: 'short',
       year: 'numeric',
@@ -21,15 +22,13 @@ const Time = ({ weatherData }) => {
       second: '2-digit',
       timeZone: weatherData.timezone,
     };
-
+    // pouziti Intl.DateTimeFormat pro formatovani casu, navigator.language vrati jazyk prohlizece 
     setFormattedTime(new Intl.DateTimeFormat(navigator.language, options).format(date));
   }, [weatherData]);
 
-  if (!weatherData) return null;
-
   return (
     <div>
-      <p className='time'>{formattedTime}</p>
+      <p className='time' title='current time and date of your timezone'>{formattedTime}</p>
     </div>
   );
 };

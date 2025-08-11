@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas: "main daily" "hourly hourly";
-    padding: 2vw;
+    padding: 0vw 2vw;
     border-radius: 12px;
     gap:1vw;
 
@@ -80,6 +80,7 @@
 
 @media (max-width: 700px){
     .weather-card{
+        padding: 2vw;
         grid-template-columns: 1fr;
         grid-template-areas:
           "main"
