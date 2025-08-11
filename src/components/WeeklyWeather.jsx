@@ -2,18 +2,22 @@ import React from 'react'
 import { iconMap } from './WeatherIcons';
 
 const WeeklyWeather = ({daily}) => {
+    // kontrola, jestli je daily pole a jestli obsahuje data
     if (!daily || !Array.isArray(daily)) return null;
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     return (
         <div className='week'>
-            <ul className='week-info'>  
+            <ul className='week-info'>
+                {/* prvni den v tydnu je dnesni den, takze seznam zacina z druhym */}  
                 {daily.slice(1, 8).map((day, idx) => {
+                    // vytvoreni data z unix timestampu
                     const date = new Date(day.dt * 1000);
                     const dayName = days[date.getDay()];
                     const IconComponent = iconMap[day.weather[0].icon] || iconMap['01d'];
 
                     return  ( 
+                        // vytvoreni seznamu s informacemi o pocasi
                         <li key={idx} className='week-list'>
                             <div className='week-container'>
                                 <p className='week-item'>{dayName}</p>

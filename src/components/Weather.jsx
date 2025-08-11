@@ -15,7 +15,7 @@ import { iconMap } from './WeatherIcons';
 const Weather = () => {
 
     const [weatherData, setWeatherData] = useState(false);
-
+    // funkce ktera vyhledava mesto podle jmena a vraci data o pocasi
     const search = async (name) => {
         
         try {
@@ -30,14 +30,14 @@ const Weather = () => {
             }
 
             const { lat, lon } = city.coord;
-
+            // API ktere vraci data o pocasi podle latitude a longitude, teplata bude vypocitana ve stupnich Celsia
             const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,alerts&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`;
 
             const response = await fetch(url);
             const data = await response.json();
 
             console.log(data);
-
+            // ikony pocasi jsou ulozene v iconMap, ktery je importovan z WeatherIcons.js
             const icon = iconMap[data.current.weather[0].icon] || iconMap['01d'];
 
             setWeatherData({
@@ -52,7 +52,9 @@ const Weather = () => {
                 daily: data.daily,
                 humidity: data.current.humidity,
                 uvi: data.current.uvi,
-                time: data.dt,
+                time: data.current.dt,
+                timezone: data.timezone,
+                timezone_offset: data.timezone_offset,
 
             });
         }   catch (error) {
@@ -64,25 +66,30 @@ const Weather = () => {
     },[])
 
   return (
-    <>
-        <Time />
+    <>  
+            {/* zobrazeni casu a data */}
+        <Time weatherData={weatherData} />
         <div className='weather-card'>
             <div className='main-info'>
                 <div className='main-container'>
+                   {/* vyhledani , vraci data o pocasi podle jmena mesta */}
                     <Searchbar onSearch={search}/>
                     <h1>{weatherData.location}</h1>
                     {weatherData.icon && <img src={weatherData.icon} alt="weather icon" width={82} height={82} />}
                     <h2>{weatherData.description}</h2>
                     <p>{weatherData.temperature}°C</p>
                     <div className='weather-details'>
+                        {/*rychlost vetru */}
                         <div className='details-item'>
                             <p>{weatherData.wind}</p>
                             <img src={WindSpeed} alt="wind" className='details-icon' width={24} height={24}/>
                         </div>
+                        {/* UVA index */}
                         <div className='details-item'>
                             <p>{weatherData.uvi}</p>
                             <img src={Uva} alt="uva" className='details-icon' width={24} height={24} />
                         </div>
+                        {/* vlhkost vzduchu */}
                         <div className='details-item'>
                             <p>{weatherData.humidity}</p>
                             <img src={Humidity} alt="Humidity" className="details-icon" width={24} height={24}/>
@@ -93,6 +100,7 @@ const Weather = () => {
 
                 
             </div>
+            {/*denni a hodinova predpoved pocasi */}
             <div className='daily'><WeeklyWeather daily={weatherData.daily}/></div>
             <div className='hourly'><HourlyWeather hourly={weatherData.hourly}/></div>
             
