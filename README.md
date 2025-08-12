@@ -7,16 +7,19 @@ Hodinová předpověď má horizontální skrollování.
 
 ## spuštění 
 
-- bash 
-git clone < odkaz na tento repozitář  >
-cd pocasi 
-- instalace závislostí
+``` bash
+git clone https://github.com/AnnaPiachenina/pocasi
+cd pocasi
 npm install
+```
 - V kořenovém adresáři (./pocasi) najdete soubor '.env.test'. 
 - Před spuštěním projektu přejmenujte soubor na '.env' (odstraňte příponu '.test').
 - Přidejte token/klíč z OpenWeather do proměnné VITE_OPEN_WEATHER_API_KEY.
 - spuštění 
+
+```bash
 npm run dev
+```
 
 ## Podporované prohlizeče 
 - aplikace byla testovaná v Google Chrome (verze 139.0.7258.67) a Safari (verze 18.0)
