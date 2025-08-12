@@ -48,6 +48,8 @@ const Weather = () => {
             setWeatherData({
                 location: city.name,
                 temperature: Math.round(data.current.temp),
+                max: Math.round(data.daily[0].temp.max),
+                min: Math.round(data.daily[0].temp.min),
                 feels_like: Math.round(data.current.feels_like),
                 humidity: data.current.humidity,
                 description: data.current.weather[0].description,
@@ -71,8 +73,6 @@ const Weather = () => {
 
   return (
     <>  
-        {/* zobrazeni casu a data */}
-        <Time weatherData={weatherData} />
 
         {weatherData ? (
 
@@ -82,9 +82,11 @@ const Weather = () => {
                     {/* vyhledani , vraci data o pocasi podle jmena mesta */}
                         <Searchbar onSearch={search}/>
                         <h1>{weatherData.location}</h1>
+                         {/* zobrazeni casu a data */}
+                        <Time weatherData={weatherData} />
                         {weatherData.icon && <img src={weatherData.icon} alt="weather icon" width={82} height={82} />}
                         <h2>{weatherData.description}</h2>
-                        <p>{weatherData.temperature}°C</p>
+                        <p className='temperature'>{weatherData.temperature}°C</p>
                         <div className='weather-details'>
                             {/*rychlost vetru */}
                             <div title='wind speed' className='details-item'>

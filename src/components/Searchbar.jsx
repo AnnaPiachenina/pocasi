@@ -4,7 +4,7 @@ import SearchIcon from './icons/SearchIcon.svg';
 
 const nextSuggestions = (cities, value) => {
     const v = value.trim().toLowerCase();
-    return v ? cities.filter(c => c.name .toLowerCase().includes(v)).slice(0,10):[];
+    return v ? cities.filter(c => c.name .toLowerCase().includes(v)).slice(0,6):[];
 };
 
 const Searchbar = ({ onSearch }) => {

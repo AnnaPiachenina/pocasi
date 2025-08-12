@@ -13,7 +13,8 @@ const WeeklyWeather = ({daily}) => {
                     // vytvoreni data z unix timestampu
                     const date = new Date(day.dt * 1000);
                     // ziskani zkraceneho nazvu dne v tydnu podle jazyku prohlizece
-                    const dayName = new Intl.DateTimeFormat(navigator.language, { weekday: 'short' }).format(date);
+                    const dayName = new Intl.DateTimeFormat(navigator.language, { weekday: 'short', month: 'short',
+                    day: 'numeric' }).format(date);
                     const IconComponent = iconMap[day.weather[0].icon] || iconMap['01d'];
 
                     return  ( 
@@ -21,13 +22,13 @@ const WeeklyWeather = ({daily}) => {
                         <li key={idx} className='week-list'>
                             <div className='week-container'>
                                 <p className='week-item'>{dayName}</p>
-                                <p className='week-item'>{Math.round(day.temp.day)}°C</p>
+                                <p className='week-item'>min: {Math.round(day.temp.min)}°C</p>
+                                <p className='week-item'>max: {Math.round(day.temp.max)}°C</p>
                                 <p className='week-item'>
                                     {IconComponent && <img src={IconComponent} alt="weather icon" width={32} height={32} />}
                                 </p>
                                 <div className='week-item wind-speed'>
-                                    <p>{day.wind_speed}</p>
-                                    <p>m/s</p>
+                                    <p>wind: {day.wind_speed} m/s</p>
                                 </div>
                             </div>
                         </li>
