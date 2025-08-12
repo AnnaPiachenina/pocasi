@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const Time = ({ weatherData }) => {
-  const [formattedTime, setFormattedTime] = useState('');
-
-  useEffect(() => {
-    // kontrola zda weatherData obsahuje potrebne informace
-    if (!weatherData?.time || !weatherData?.timezone) {
-      setFormattedTime('');
-      return;
-    }
-    // prevod unix casu na Date objekt a formatovani casu
+    // kontrola, jestli je weatherData objekt a jestli obsahuje time
+    if (!weatherData?.time) return null;
+    // vytvoreni data z unix timestampu, ktery prevedeme na milisekundy
     const date = new Date(weatherData.time * 1000);
-    // formatovani casu podle timezone uzivatele
-    const options = {
+    
+    const formattedTime = new Intl.DateTimeFormat(navigator.language, {
       weekday: 'short',
       year: 'numeric',
       month: 'short',
@@ -20,15 +14,11 @@ const Time = ({ weatherData }) => {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      timeZone: weatherData.timezone,
-    };
-    // pouziti Intl.DateTimeFormat pro formatovani casu, navigator.language vrati jazyk prohlizece 
-    setFormattedTime(new Intl.DateTimeFormat(navigator.language, options).format(date));
-  }, [weatherData]);
+    }).format(date);
 
   return (
     <div>
-      <p className='time' title='current time and date of your timezone'>{formattedTime}</p>
+      <p className='time' title='Current time and date of your timezone'>{formattedTime}</p>
     </div>
   );
 };

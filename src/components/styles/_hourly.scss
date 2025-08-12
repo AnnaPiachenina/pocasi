@@ -1,4 +1,4 @@
-.day-t-list {
+.hourly-list {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -7,11 +7,11 @@
     gap: 1vw;
 }
 
-.day-t-item {
+.hourly-item {
     width: 10vw;
     flex: 0 0 auto;
 }
-.day-t-content {
+.hourly-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,16 +28,11 @@
     align-items: center;
     gap: 1vw;
 }
-.scroll{
-    font-size: 3vw;
-}
+
 
 @media (max-width: 600px){
-    .day-t-item {
+    .hourly-item {
         width: 15vw;
-    }
-    .scroll{
-        font-size: 5vw;
     }
     .hour-scroll {
         gap: 2vw;

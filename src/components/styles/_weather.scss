@@ -1,15 +1,14 @@
-
 .weather-card{
     color: white;
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas: "main daily" "hourly hourly";
+    grid-template-areas: "main weekly" "hourly hourly";
     padding: 0vw 2vw;
     border-radius: 12px;
     gap:1vw;
 
-    .daily { 
-        grid-area: daily; 
+    .weekly { 
+        grid-area: weekly; 
         background-color: $secondary-color;
         border-radius: 8px;
         margin-top: 2vw;
@@ -85,12 +84,12 @@
         grid-template-areas:
           "main"
           "hourly"
-          "daily";
+          "weekly";
         .hourly{
             width: 85vw;
             justify-self: center;
         }
-        .daily{
+        .weekly{
             width: 85vw;
             justify-self: center;
         }

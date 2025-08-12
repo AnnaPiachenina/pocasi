@@ -2,31 +2,29 @@ import React, {useState} from 'react'
 import cityList from '../data/city.list.json';
 import SearchIcon from './icons/SearchIcon.svg';
 
-const Searchbar = ({onSearch}) => {
+const nextSuggestions = (cities, value) => {
+    const v = value.trim().toLowerCase();
+    return v ? cities.filter(c => c.name .toLowerCase().includes(v)).slice(0,10):[];
+};
 
+const Searchbar = ({ onSearch }) => {
     const [search, setSearch] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+
     // funkce ktera se spusti pri zmene inputu a vraci seznam mest podle zadanho jmena
     const handleSearchChange = (e) => {
         const value = e.target.value;
         setSearch(value);
-        // pokud je input prazdny, tak se seznam mest vymaze
-        if (value.trim() !== '') {
-            const filteredSuggestions = cityList.filter((city) =>
-                city.name.toLowerCase().includes(value.toLowerCase())
-            );
-            setSuggestions(filteredSuggestions);
-        } else {
-            setSuggestions([]);
-        }
+        setSuggestions(nextSuggestions(cityList, value));
     };
+    
     // po odeslani formulare se vyhleda mesto podle zadanho jmena
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (search.trim() !== '') {
-            onSearch(search.trim());
-        }
+        const q = search.trim();
+        if (q) onSearch(q);
     }
+    
     // spusti se pri kliknuti na navrhovane mesto a vyhleda ho
     const handleSuggestionClick = (suggestion) => {
         setSearch(suggestion.name);
@@ -44,10 +42,9 @@ const Searchbar = ({onSearch}) => {
 
         {suggestions.length > 0 && (
         <ul className="suggestions-list" role="listbox">
-            {/*limit na max 10 navrhovanych mest*/}
-            {suggestions.slice(0, 10).map((s, i) => (
+            {suggestions.map((s) => (
             <li
-                key={i}
+                key={s.id}
                 className="suggestion-item"
                 onMouseDown={() => handleSuggestionClick(s)} 
                 role="option"

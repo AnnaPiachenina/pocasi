@@ -1,4 +1,4 @@
-.day-t-list {
+.hourly-list {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -7,12 +7,12 @@
   gap: 1vw;
 }
 
-.day-t-item {
+.hourly-item {
   width: 10vw;
   flex: 0 0 auto;
 }
 
-.day-t-content {
+.hourly-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,16 +30,9 @@
   gap: 1vw;
 }
 
-.scroll {
-  font-size: 3vw;
-}
-
 @media (max-width: 600px) {
-  .day-t-item {
+  .hourly-item {
     width: 15vw;
-  }
-  .scroll {
-    font-size: 5vw;
   }
   .hour-scroll {
     gap: 2vw;
@@ -48,6 +41,7 @@
 .week-info {
   display: flex;
   flex-direction: column;
+  font-size: 2vw;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -106,13 +100,13 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-areas: "main daily" "hourly hourly";
+  grid-template-areas: "main weekly" "hourly hourly";
   padding: 0vw 2vw;
   border-radius: 12px;
   gap: 1vw;
 }
-.weather-card .daily {
-  grid-area: daily;
+.weather-card .weekly {
+  grid-area: weekly;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   margin-top: 2vw;
@@ -179,13 +173,13 @@
   .weather-card {
     padding: 2vw;
     grid-template-columns: 1fr;
-    grid-template-areas: "main" "hourly" "daily";
+    grid-template-areas: "main" "hourly" "weekly";
   }
   .weather-card .hourly {
     width: 85vw;
     justify-self: center;
   }
-  .weather-card .daily {
+  .weather-card .weekly {
     width: 85vw;
     justify-self: center;
   }
@@ -288,8 +282,6 @@
   padding: 0.2vw;
   margin-top: 0.5vw;
   border-radius: 8px;
-  max-height: 40vh;
-  overflow: auto;
 }
 
 .suggestion-item {
@@ -319,11 +311,10 @@
 }
 .time {
   color: white;
-  margin: 0 3vw;
-  padding: 0;
+  margin: 0;
+  padding: 0 3vw;
   padding-top: 1vw;
   font-size: 1.5vw;
-  font-weight: bald;
 }
 
 @media (max-width: 900px) {

@@ -1,20 +1,25 @@
 import React, {useEffect} from 'react'
 import { useState } from 'react';
+
 import './styles/style.css'   
 import cityList from '../data/city.list.json';
+
 import Time from './Time';
 import WeeklyWeather from './WeeklyWeather';
 import HourlyWeather from './HourlyWeather';
 import Searchbar from './Searchbar';
+
 import Humidity from './icons/Humidity.svg'; 
-import Uva from './icons/Uva.svg';
+import Uv from './icons/Uv.svg';
 import WindSpeed from './icons/WindSpeed.svg';
 
 import { iconMap } from './WeatherIcons';
 
+
 const Weather = () => {
 
-    const [weatherData, setWeatherData] = useState(false);
+    const [weatherData, setWeatherData] = useState(null);
+
     // funkce ktera vyhledava mesto podle jmena a vraci data o pocasi
     const search = async (name) => {
         
@@ -50,7 +55,6 @@ const Weather = () => {
                 wind: data.current.wind_speed,
                 hourly: data.hourly,
                 daily: data.daily,
-                humidity: data.current.humidity,
                 uvi: data.current.uvi,
                 time: data.current.dt,
                 timezone: data.timezone,
@@ -67,44 +71,52 @@ const Weather = () => {
 
   return (
     <>  
-            {/* zobrazeni casu a data */}
+        {/* zobrazeni casu a data */}
         <Time weatherData={weatherData} />
-        <div className='weather-card'>
-            <div className='main-info'>
-                <div className='main-container'>
-                   {/* vyhledani , vraci data o pocasi podle jmena mesta */}
-                    <Searchbar onSearch={search}/>
-                    <h1>{weatherData.location}</h1>
-                    {weatherData.icon && <img src={weatherData.icon} alt="weather icon" width={82} height={82} />}
-                    <h2>{weatherData.description}</h2>
-                    <p>{weatherData.temperature}°C</p>
-                    <div className='weather-details'>
-                        {/*rychlost vetru */}
-                        <div title='wind speed' className='details-item'>
-                            <p>{weatherData.wind}</p>
-                            <img src={WindSpeed} alt="wind" className='details-icon' width={24} height={24}/>
+
+        {weatherData ? (
+
+            <div className='weather-card'>
+                <div className='main-info'>
+                    <div className='main-container'>
+                    {/* vyhledani , vraci data o pocasi podle jmena mesta */}
+                        <Searchbar onSearch={search}/>
+                        <h1>{weatherData.location}</h1>
+                        {weatherData.icon && <img src={weatherData.icon} alt="weather icon" width={82} height={82} />}
+                        <h2>{weatherData.description}</h2>
+                        <p>{weatherData.temperature}°C</p>
+                        <div className='weather-details'>
+                            {/*rychlost vetru */}
+                            <div title='wind speed' className='details-item'>
+                                <p>{weatherData.wind}</p>
+                                <img src={WindSpeed} alt="wind" className='details-icon' width={24} height={24}/>
+                            </div>
+                            {/* UV index */}
+                            <div title='UV index' className='details-item'>
+                                <p>{weatherData.uvi}</p>
+                                <img src={Uv} alt="uv" className='details-icon' width={24} height={24} />
+                            </div>
+                            {/* vlhkost vzduchu */}
+                            <div title='Humidity' className='details-item'>
+                                <p>{weatherData.humidity}</p>
+                                <img src={Humidity} alt="Humidity" className="details-icon" width={24} height={24}/>
+                            </div>
                         </div>
-                        {/* UVA index */}
-                        <div title='UVA index' className='details-item'>
-                            <p>{weatherData.uvi}</p>
-                            <img src={Uva} alt="uva" className='details-icon' width={24} height={24} />
-                        </div>
-                        {/* vlhkost vzduchu */}
-                        <div title='Humidity' className='details-item'>
-                            <p>{weatherData.humidity}</p>
-                            <img src={Humidity} alt="Humidity" className="details-icon" width={24} height={24}/>
-                        </div>
+
                     </div>
 
+                    
                 </div>
-
+                {/*denni a hodinova predpoved pocasi */}
+                <div className='weekly'><WeeklyWeather daily={weatherData.daily}/></div>
+                <div className='hourly'><HourlyWeather hourly={weatherData.hourly}/></div>  
                 
             </div>
-            {/*denni a hodinova predpoved pocasi */}
-            <div className='daily'><WeeklyWeather daily={weatherData.daily}/></div>
-            <div className='hourly'><HourlyWeather hourly={weatherData.hourly}/></div>
-            
-        </div>
+
+        ) : (
+            // pokud neni data o pocasi, zobraz loading
+            <div className='loading'>Loading...</div>
+        )}
     </>
   )
 }
